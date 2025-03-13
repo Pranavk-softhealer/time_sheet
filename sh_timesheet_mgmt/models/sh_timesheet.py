@@ -26,7 +26,7 @@ class Sh_timesheet(models.Model):
     task_ids = fields.One2many('sh.task','timesheet_id',string='Task')
     total_amt = fields.Integer(string='Total Amount',compute="compute_total_amt")
     manager_id = fields.Many2one('res.users',string='Manager')
-    nakamu = fields.Char(string="Nakamu")
+    saavnakamu = fields.Char(string="SaavNakamu")
 
     @api.depends('task_ids')
     def compute_total_amt(self):
