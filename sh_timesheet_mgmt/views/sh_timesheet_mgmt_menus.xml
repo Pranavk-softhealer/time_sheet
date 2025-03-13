@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="sh_timesheet_menu" name="Timesheet" sequence="1">
+        <menuitem id="sh_tags_menu" name="Tags" sequence="1" action="action_sh_tag" />
+        <menuitem id="sh_task_menu" name="Task" sequence="2" action="action_sh_task"/>
+        <menuitem id="sh_timesheet_sub_menu" name="Timesheet" sequence="3" action="action_sh_timesheet"/>
+    </menuitem>
+</odoo>

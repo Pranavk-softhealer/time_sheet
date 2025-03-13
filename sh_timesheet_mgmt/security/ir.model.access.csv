@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_timesheet_user,sh.timesheet,model_sh_timesheet,user_group_timesheet,1,1,1,0
+access_sh_timesheet_hr,sh.timesheet,model_sh_timesheet,hr_group_timesheet,1,1,1,0
+access_sh_timesheet_admin,sh.timesheet,model_sh_timesheet,admin_group_timesheet,1,1,1,1
+access_sh_tag,sh.tag,model_sh_tag,base.group_user,1,1,1,1
+access_sh_task,sh.task,model_sh_task,base.group_user,1,1,1,1
+access_sh_reason,sh.reason,model_sh_reason,base.group_user,1,1,1,1

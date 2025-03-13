@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="inherit_sale_report" name="inherit_sale_report" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//div[@id='informations']" position="inside">
+        <div t-if="doc.user_id.name and doc.warranty_applicable" class="col">
+                <strong>Warranty applicable</strong>
+                <div t-field="doc.warranty_applicable"></div>
+        </div>
+    </xpath>
+    <xpath expr="//th[@name='th_priceunit']" position="before">
+        <th name="th_note" class="text-end text-nowrap">Note</th>
+    </xpath>
+    <xpath expr="//td[@name='td_priceunit']" position="before">
+        <td name="td_note" class="text-end text-nowrap">
+            <span t-field="line.custom_note">custom_note</span>
+        </td>
+    </xpath>
+</template>
+
+    <template id="timesheet_report_template">
+        <t t-call="web.html_container"> 
+            <t t-call='web.external_layout'>
+                <t t-foreach="docs" t-as="doc">
+                    <h2 class="text-info text-center">Timesheet Report</h2>
+                    <br></br>
+                    <br></br>
+                    <table class="o_has_total_table table o_main_table table-borderless">
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th class="text-start">Name</th>
+                                <th class="text-end text-nowrap">User</th>
+                                <th class="text-end text-nowrap">Date</th>
+                                <th class="text-end text-nowrap">Task</th>
+                                <th class="text-end">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start"><span t-field="doc.name">Name</span></td>
+                                <td class="text-end text-nowrap"><span t-field="doc.user_id.name">User</span></td>
+                                <td class="text-end text-nowrap"><span t-field="doc.date">Date</span></td>
+                                <td class="text-end text-nowrap">
+                                    <t t-foreach="doc.task_ids" t-as="task">
+                                        <span t-field="task.name"/>
+                                        <span><br/></span>
+                                    </t>
+                                </td>
+                                <td class="text-end"><span t-field="doc.total_amt">Total Amount</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="o_has_total_table table o_main_table table-borderless">
+                        <tr class="o_total">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td class="text-end">total</td>
+                            <td class="text-end">230</td>
+                        </tr>
+
+                    </table>
+
+                </t>
+            </t> 
+        </t>
+    </template>
+
+    <record id="action_timesheet_report" model="ir.actions.report">
+        <field name="name">Timesheet</field>
+        <field name="model">sh.timesheet</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">sh_timesheet_mgmt.timesheet_report_template</field>
+        <field name="report_file">sh_timesheet_mgmt.timesheet_report_template</field>
+        <field name="binding_model_id" ref="model_sh_timesheet"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,92 @@
+<odoo>
+    <data noupdate="1">
+        <record model="ir.cron" forcecreate="True" id="timesheet_scheduler">
+            <field name="name">Timesheet Scheduler</field>
+            <field name="model_id" ref="model_sh_timesheet"/>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(minutes=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="code">model.smart_clicked()</field>
+            <field name="state">code</field>
+        </record>
+    </data>
+</odoo>
+
+        <!-- <record id="view_account_payment_kanban" model="ir.ui.view">
+            <field name="name">account.payment.kanban</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" create="0" group_create="0" sample="1">
+                    <templates>
+                        <t t-name="card">
+                            <div class="row mb4">
+                                <div class="col-6">
+                                   <field class="fw-bolder" name="name"/>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <i class="fa fa-clock-o fw-bold" role="img" aria-label="Date" title="Date"/> <field class="fw-bold" name="date"/>
+                                </div>
+                            </div>
+                            <field name="partner_id"/>
+                            <div class="row">
+                                <div class="col-6">
+                                    <field name="amount" widget='monetary'/>
+                                    <field name="currency_id" invisible="1"/>
+                                </div>
+                                <div class="col-6">
+                                    <field class="float-end" name="state" widget="label_selection" options="{'classes': {'draft': 'secondary', 'sent': 'success'}}"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record> -->
+
+        <!-- <record id="view_account_payment_search" model="ir.ui.view">
+            <field name="name">account.payment.search</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <search string="Payments">
+                    <field name="name" string="Payment"
+                        filter_domain="['|', '|', '|', '|', ('name', 'ilike', self), ('partner_id', 'ilike', self), ('memo', 'ilike', self), ('amount_company_currency_signed' , 'ilike', self), ('amount', 'ilike', self)]"/>
+                    <field name="partner_id" string="Customer/Vendor"/>
+                    <field name="journal_id"/>
+                    <separator/>
+                    <filter string="Customer Payments"
+                            name="inbound_filter"
+                            domain="[('partner_type', '=', 'customer')]"/>
+                    <filter string="Vendor Payments"
+                            name="outbound_filter"
+                            domain="[('partner_type', '=', 'supplier')]"/>
+                    <separator/>
+                    <filter string="Draft" name="state_draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="In Process" name="state_in_process" domain="[('state', '=', 'in_process')]"/>
+                    <separator/>
+                    <filter string="Sent" name="state_sent" domain="[('is_sent', '=', 'True')]"/>
+                    <filter string="Not Sent" name="state_sent" domain="[('is_sent', '=', 'False')]"/>
+                    <filter string="No Bank Matching" name="unmatched" domain="[('is_matched', '=', False)]"/>
+                    <filter string="Reconciled" name="reconciled" domain="[('is_reconciled', '=', True)]"/>
+                    <separator/>
+                    <filter string="Payment Date" name="date" date="date"/>
+                    <separator/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <filter string="Partner" name="partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Journal" name="journal" domain="[]" context="{'group_by': 'journal_id'}"/>
+                    <filter string="Payment Method Line" name="paymentmethodline" domain="[]" context="{'group_by': 'payment_method_line_id'}"/>
+                    <filter string="Status" name="state" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter string="Payment Date" name="groupby_date" domain="[]" context="{'group_by': 'date'}"/>
+                    <filter string="Currency" name="currency" domain="[]" context="{'group_by': 'currency_id'}" groups="base.group_multi_currency"/>
+                    <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                    <separator/>
+                    <filter invisible="1" string="Late Activities" name="activities_overdue"
+                        domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                        help="Show all records which has next action date is before today"/>
+                    <filter invisible="1" string="Today Activities" name="activities_today"
+                        domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter invisible="1" string="Future Activities" name="activities_upcoming_all"
+                        domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                </search>
+            </field>
+        </record> -->

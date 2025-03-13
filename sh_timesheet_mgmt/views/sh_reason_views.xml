@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sh_reason_form" model="ir.ui.view">
+        <field name="name">view.sh.reason.form</field>
+        <field name="model">sh.reason</field>
+        <field name="arch" type="xml">
+            <form string="Sh Reason">
+                <sheet>
+                   <field name='name'/>
+                </sheet>
+                <footer>
+                    <button string="Reject" class="btn btn-danger" name="reject_reason_button" type="object"/>
+                    <button string="Discard" class="btn btn-info" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sh_reason" model="ir.actions.act_window">
+        <field name="name">Sh Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sh.reason</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Sh Reason.
+            </p>
+        </field>
+    </record>
+        
+
+
+    <!-- Action sh.reason -->
+    <record id="action_sh_reason" model="ir.actions.act_window">
+        <field name="name">Sh Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sh.reason</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Sh Reason.
+            </p>
+        </field>
+    </record>
+
+</odoo>
